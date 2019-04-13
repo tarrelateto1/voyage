@@ -11,11 +11,11 @@ admin.initializeApp({
   databaseURL: "https://voyage-cd39b.firebaseio.com"
 });
 
-
-app.get('/',function(req,res) {
+// เหมือนจะไม่ได้ใช้แล้ว
+app.get('/test_load_img',function(req,res) {
     res.sendFile(__dirname+'/Design/load_img.html');
   });
 
 
-app.listen(8081);
 
+app.listen(8081);
