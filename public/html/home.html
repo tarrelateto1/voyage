@@ -28,33 +28,33 @@
         <div id="myTabContent" class="tab-content">
 
         <div class="tab-pane fade active in" id="signin">
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="POST" action = "/login" name="login">
             <fieldset>
             <!-- Sign In Form -->
             <!-- Text input-->
 
                <div class="group">
-<input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" id= "labelblack" for="date" style = "color:black;">Email address</label></div>
+<input required="" class="input" type="text"name = "user"><span class="highlight"></span><span class="bar"></span>
+    <label class="label" id= "labelblack" for="date" style = "color:black;">Username</label></div>
 
 
             <!-- Password input-->
             <div class="group">
-<input required="" class="input" type="password"><span class="highlight"></span><span class="bar"></span>
+<input required="" class="input" type="password" name="pass"><span class="highlight"></span><span class="bar"></span>
     <label class="label" id= "labelblack" for="date">Password</label>
     </div>
 <em>minimum 6 characters</em>
 
-           <div class="forgot-link">
+           <!-- <div class="forgot-link">
             <a href="#forgot" data-toggle="modal" data-target="#forgot-password"> I forgot my password</a>
-            </div>
+            </div> -->
 
 
             <!-- Button -->
             <div class="control-group">
               <label class="control-label" for="signin"></label>
               <div class="controls">
-                <button id="signin" name="signin" class="btn btn-primary btn-block">Log In</button>
+                <button id="signin" name="signin" class="btn btn-primary btn-block" type="submit">Log In</button>
               </div>
             </div>
             </fieldset>
@@ -63,33 +63,33 @@
 
 
         <div class="tab-pane fade" id="signup">
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="POST" action = "/register" name="register">
             <fieldset>
             <!-- Sign Up Form -->
             <!-- Text input-->
             <div class="group">
-<input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" id= "labelblack" for="date">First Name</label></div>
+<input required="" class="input" type="text" name="user"><span class="highlight"></span><span class="bar"></span>
+    <label class="label" id= "labelblack" for="date" >Username</label></div>
 
             <!-- Text input-->
-            <div class="group">
+            <!-- <div class="group">
 <input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" id= "labelblack" for="date">Last Name</label></div>
+    <label class="label" id= "labelblack" for="date">Last Name</label></div> -->
 
             <!-- Password input-->
-            <div class="group">
+            <!-- <div class="group">
 <input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" id= "labelblack" for="date">Email</label></div>
+    <label class="label" id= "labelblack" for="date">Email</label></div> -->
 
             <!-- Text input-->
             <div class="group">
-<input required="" class="input" type="password"><span class="highlight"></span><span class="bar"></span>
+<input required="" class="input" type="password" name="pass"><span class="highlight"></span><span class="bar"></span>
     <label class="label" id= "labelblack" for="date">Password</label></div>
               <em>1-8 Characters</em>
 
-              <div class="group2">
+              <!-- <div class="group2">
 <input required="" class="input" type="text"><span class="highlight"></span><span class="bar"></span>
-    <label class="label" id= "labelblack" for="date">Country</label></div>
+    <label class="label" id= "labelblack" for="date">Country</label></div> -->
 
 
 
@@ -118,7 +118,7 @@
 
 <!--modal2-->
 
-<div class="modal fade bs-modal-sm" id="forgot-password" tabindex="0" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<!-- <div class="modal fade bs-modal-sm" id="forgot-password" tabindex="0" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
         <div class="modal-header">
@@ -146,4 +146,4 @@
     </div>
 
   </div>
-</div>
+</div> -->
