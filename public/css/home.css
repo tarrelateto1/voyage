@@ -10,6 +10,9 @@ background-color:#f2f2f2;
 
 
 }
+#labelblack{
+  color:black;
+}
 .nav-tabs > li > a {
     margin-right: 0px;
     color:grey;
