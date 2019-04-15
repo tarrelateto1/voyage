@@ -29,6 +29,7 @@ admin.initializeApp({
 var db = admin.database();
 var ref = db.ref("blogger");
 var t2;
+
 ref.once("value", function(snapshot) {
   t2 = snapshot.val();
   console.log("begin");
@@ -47,13 +48,10 @@ for (var k in t2 ){
   // keys.push(k);  
   // console.log(t2[String(k)]["user"]);
   if(t2[String(k)]["user"] == "tar"){
-    console.log(t2[String(k)]["title"]);
-    
+    console.log(t2[String(k)]["title"]); 
   }
-
 }
 console.log("test log");
-
 for (var i = 0 ; i<keys.length;i++){
   // if(keys[i]=="por"){
   //   console.log("user ");
@@ -61,12 +59,36 @@ for (var i = 0 ; i<keys.length;i++){
   console.log(t2[String(keys[i])]["user"]);
   
 }
+//use in create blogger
+console.log("test push");
+
+var postsRef = db.ref("blogger");
+
+postsRef.push().set({
+  "user":"jirawat",
+  "title":"koko",
+  "content":"jer koko"
+})
 
 
+// ref = db.ref("blogger");
 
+// var postsRef = ref
+
+// var newPostRef = postsRef.push();
+// newPostRef.set({
+//   author: "gracehop",
+//   title: "Announcing COBOL, a New Programming Language"
+// });
+
+// // we can also chain the two calls together
+// postsRef.push().set({
+//   author: "alanisawesome",
+//   title: "The Turing Machine"
+// });
+// console.log("success");
 
 });
-
 
 //download list user
 var db = admin.database();
