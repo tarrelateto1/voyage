@@ -302,8 +302,11 @@ var head = '';
   head += ' </head>'
   head += '  <meta name="viewport" content="width=device-width, initial-scale=1">'
   head += '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  ';
-  // head += '<script src ="./ckeditor/ckeditor.js">'
-  head += '<script src="./node_modules/ckeditor/ckeditor.js"></script>  '
+  // head += '<script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>'
+  head += '<script rel="stylesheet" src="./ckeditor/ckeditor.js"></script>'
+  // head += ' <script src ="./ckeditor/ckeditor.js">'
+  // head += '<script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>  '
+  // head += '<script src="./node_modules/ckeditor/ckeditor.js"></script>  '
   head += '<style>div.b{width: 800px;}</style>'
   head += ' </header>'; 
   // ส่วนของ body
@@ -311,22 +314,51 @@ var head = '';
   body += '<body style="width:800;height:400;">';
 //ส่วนที่สามารถแก้ไขได้
   body += '<a href="myblogger > <button type ="button">Myblogger</button></a><br>'
-  body += '<a href="logout"> <button type="button">Logout</button> </a>';
+  body += '<a href="logout"> <button type="button" id="logout">Logout</button> </a>';
   body += '<div style="align:center;" > Create BLOGGER </div>'
   body += '<form method="POST"  name="blog" action="/createblogger-sendfile">'
   body += '<h1> Title</h1><br>';
   body += '<input type= "text" name="title"><br>';
   body += '<h1>write Review</h1><br>'
   body += '<div class="b">'
-  // body += '<textarea name="content" class="ckeditor" ></textarea></div>'
+  // body += '<textarea name="content" id="editor">This is some sample content.</textarea>'
+  // body += '<script>'
+  // body += '        ClassicEditor'
+  // body += '          .create( document.querySelector( "#editor" ) )'
+  // body += '          .then( editor => {'
+  //   body += '                  console.log( editor );'
+  //   body += '            } )'
+  //   body += '           .catch( error => {'
+  //     body += '                   console.error( error );'
+  //     body += '              } );'
+  //     body += ' </script>'
+  body += '<textarea name="content" class="ckeditor" ></textarea></div>'
   // body += ' <script>CKEDITOR.replace( "content" );</script>'
-  body += '<div id="editor"> <p>This is the editor content.</p></div>';
-  body += 'script src="./node_modules/ckeditor/ckeditor.js"></script>';
-  body += '<script>CKEDITOR.replace( "editor" );</script>';
-  body += '<button type="submit">submit</button>'
+  // body += '<div id="editor"> <p>This is the editor content.</p></div>';
+  // body += '<script src="./node_modules/ckeditor/ckeditor.js"></script>';
+  // body += '<script>CKEDITOR.replace( "editor" );</script>';
+  //  body += '<textarea name="content" class="ckeditor" ></textarea></div>'
+  // body += ' <script>CKEDITOR.replace( "content" );</script>'
+  body += '    <input type ="file" value ="upload" id="fileButton" hidden ="hidden"/> '
+  body += '<button type="submit" id="myCheck" >submit</button>'
   body += '</form>'
+//เพิ่มปุ่ม
 
 
+body += '<script>editor = CKEDITOR.replace("content"); '
+body += 'editor.addCommand("mySimpleCommand", { '
+  body += '  exec: function(edt) {'
+    body += '       document.getElementById("fileButton").click();'
+    body += '   }'
+    body += '});'
+
+    body += 'editor.ui.addButton("SuperButton", { '
+      body += '  label: "Click me",'
+      body += '  command: "mySimpleCommand",'
+      body += '  toolbar: "insert",'
+      body += '   icon: "https://avatars1.githubusercontent.com/u/5500999?v=2&s=16" '
+      body += '});'
+      body += '	</script>'
 //ส่วนท้ายของ body
 
 body += '</body>';

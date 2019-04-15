@@ -12,8 +12,24 @@
     }</style>
 
   </head>
-  <body><div class= "b">
+  <body>
+    <div class= "b">
     <textarea name="ckeditor" class="ckeditor"></textarea>
   </div>
+  <script>editor = CKEDITOR.replace('ckeditor'); // bind editor
+
+editor.addCommand("mySimpleCommand", { // create named command
+    exec: function(edt) {
+        alert("hello gu ma leaw");
+    }
+});
+
+editor.ui.addButton('SuperButton', { // add new button and bind our command
+    label: "Click me",
+    command: 'mySimpleCommand',
+    toolbar: 'insert',
+    icon: 'https://avatars1.githubusercontent.com/u/5500999?v=2&s=16'
+});
+	</script>
   </body>
 </html>
