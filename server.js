@@ -303,7 +303,7 @@ var head = '';
   head += '  <meta name="viewport" content="width=device-width, initial-scale=1">'
   head += '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  ';
   // head += '<script src ="./ckeditor/ckeditor.js">'
-  head += '<script rel="stylesheet" src="./ckeditor/ckeditor.js"></script>'
+  head += '<script src="./node_modules/ckeditor/ckeditor.js"></script>  '
   head += '<style>div.b{width: 800px;}</style>'
   head += ' </header>'; 
   // ส่วนของ body
@@ -318,7 +318,11 @@ var head = '';
   body += '<input type= "text" name="title"><br>';
   body += '<h1>write Review</h1><br>'
   body += '<div class="b">'
-  body += '<textarea name="content" class="ckeditor" ></textarea></div>'
+  // body += '<textarea name="content" class="ckeditor" ></textarea></div>'
+  // body += ' <script>CKEDITOR.replace( "content" );</script>'
+  body += '<div id="editor"> <p>This is the editor content.</p></div>';
+  body += 'script src="./node_modules/ckeditor/ckeditor.js"></script>';
+  body += '<script>CKEDITOR.replace( "editor" );</script>';
   body += '<button type="submit">submit</button>'
   body += '</form>'
 
