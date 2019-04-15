@@ -153,6 +153,10 @@ u.setpass(null);
 u.setstate("User");
 res.send('<html><head></head><body><script>alert("logout success"); window.location.replace("/");</script></body></html>')
 });
+app.post('/createblogger-sendfile',function(req,res){
+  console.log(req.body.title);
+  console.log(req.body.content);
+});
 
 
 //ส่วนที่แสดงผล
@@ -195,7 +199,7 @@ if(u.user ==null){
   html += body;
   res.send(html);
 });
-
+// Myblooger page
 app.get('/myblogger',function(req,res){
   var head = '';
   head += '<!DOCTYPE html>'
@@ -212,6 +216,7 @@ app.get('/myblogger',function(req,res){
 //ส่วนที่สามารถแก้ไขได้
   body += '<a href="myblogger > <button type ="button">Myblogger</button></a><br>'
   body += '<a href="logout"> <button type="button">Logout</button> </a>';
+  body += '<div style="align:center;" > MY BLOGGER </div>'
   body +='<div class="card-deck">'
 
   for (var k in t2 ){
@@ -238,8 +243,54 @@ app.get('/myblogger',function(req,res){
     }
   }
   body +='  </div>'
+body += '<br>'
+body += '<div align="left"><a href="/createblogger"><button type = "button"> create blogger </button></a></div>'
 
 
+
+
+
+//ส่วนท้ายของ body
+
+body += '</body>';
+body += '</html>';
+var html ='';
+html += head;
+html += body;
+res.send(html);
+});
+
+// create page
+app.get('/createblogger',function(req,res){
+ 
+
+var head = '';
+  head += '<!DOCTYPE html>'
+  head += '<html>';
+  head += '<head>';
+  head += ' <meta charset="UTF-8">';
+  head += ' </head>'
+  head += '  <meta name="viewport" content="width=device-width, initial-scale=1">'
+  head += '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  ';
+  // head += '<script src ="./ckeditor/ckeditor.js">'
+  head += '<script rel="stylesheet" src="./ckeditor/ckeditor.js"></script>'
+  head += '<style>div.b{width: 800px;}</style>'
+  head += ' </header>'; 
+  // ส่วนของ body
+  var body = '';
+  body += '<body style="width:800;height:400;">';
+//ส่วนที่สามารถแก้ไขได้
+  body += '<a href="myblogger > <button type ="button">Myblogger</button></a><br>'
+  body += '<a href="logout"> <button type="button">Logout</button> </a>';
+  body += '<div style="align:center;" > Create BLOGGER </div>'
+  body += '<form method="POST"  name="blog" action="/createblogger-sendfile">'
+  body += '<h1> Title</h1><br>';
+  body += '<input type= "text" name="title"><br>';
+  body += '<h1>write Review</h1><br>'
+  body += '<div class="b">'
+  body += '<textarea name="content" class="ckeditor" ></textarea></div>'
+  body += '<button type="submit">submit</button>'
+  body += '</form>'
 
 
 //ส่วนท้ายของ body
