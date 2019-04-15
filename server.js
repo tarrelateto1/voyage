@@ -39,8 +39,32 @@ ref.once("value", function(snapshot) {
 console.log(t2["a1"]["user"]);
 console.log(Object.keys(t2["a1"]["comment"]))
 var test = Object.keys(t2)
-console.log(Object.keys(t2)[0]);
+console.log(Object.keys(t2).length);
 console.log(test[1]);
+console.log("test for");
+var keys=[]
+for (var k in t2 ){
+  // keys.push(k);  
+  // console.log(t2[String(k)]["user"]);
+  if(t2[String(k)]["user"] == "tar"){
+    console.log(t2[String(k)]["title"]);
+    
+  }
+
+}
+console.log("test log");
+
+for (var i = 0 ; i<keys.length;i++){
+  // if(keys[i]=="por"){
+  //   console.log("user ");
+  // }
+  console.log(t2[String(keys[i])]["user"]);
+  
+}
+
+
+
+
 });
 
 
@@ -154,7 +178,9 @@ app.get('/',function(req,res){
 if(u.user ==null){
   body += '<div id="includedContent"></div>';
 }else {
-  body += '<a href="logout"> <button type="button">Click Me!</button> </a>  ';
+  body += '<a href="myblogger" > <button type ="button">Myblogger</button></a><br>'
+  body += '<a href="logout"> <button type="button">Logout</button> </a>';
+  
 }
   // body += '<div id="includedContent"></div>';
   // body += '<form><input type="button" value="Put Your Text Here" onclick="window.location.href="http://www.hyperlinkcode.com/button-links.php" /></form>';
@@ -168,6 +194,62 @@ if(u.user ==null){
   html += head;
   html += body;
   res.send(html);
+});
+
+app.get('/myblogger',function(req,res){
+  var head = '';
+  head += '<!DOCTYPE html>'
+  head += '<html>';
+  head += '<head>';
+  head += ' <meta charset="UTF-8">';
+  head += ' </head>'
+  head += '  <meta name="viewport" content="width=device-width, initial-scale=1">'
+  head += '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  ';
+  head += ' </header>'; 
+  // ส่วนของ body
+  var body = '';
+  body += '<body>';
+//ส่วนที่สามารถแก้ไขได้
+  body += '<a href="myblogger > <button type ="button">Myblogger</button></a><br>'
+  body += '<a href="logout"> <button type="button">Logout</button> </a>';
+  body +='<div class="card-deck">'
+
+  for (var k in t2 ){
+    // keys.push(k);  
+    // console.log(t2[String(k)]["user"]);
+    if(t2[String(k)]["user"] == String(u.user)){
+      body += '<form method="POST"  name="blog">'
+      // body += '<input type="hidden" name = "id" value = "id"><br>'
+      // body += '<input type="hidden" name = "title" value = "title"><br>'
+      // body += '<input type="submit" value = submit><br>'
+      // body +='<div class="card" style="width: 18rem;">'
+      body += ' <div class="card">'
+      body += '  <img class="card-img-top" src="..." alt="Card image cap">'
+      body += ' <div class="card-body">'
+      body += '   <h5 class="card-title">Title '+String(t2[String(k)]["title"])+'</h5>'
+      // body += '  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>'
+      // body += '  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>'
+      body += '<button type ="button">ดูblogger</button>'
+      body += ' </div>'
+      body += ' </div>'
+      //  body +='  </div>'
+      
+      body += '</form>'
+    }
+  }
+  body +='  </div>'
+
+
+
+
+//ส่วนท้ายของ body
+
+body += '</body>';
+body += '</html>';
+var html ='';
+html += head;
+html += body;
+res.send(html);
 });
 
 
