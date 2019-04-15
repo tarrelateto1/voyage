@@ -62,13 +62,13 @@ for (var i = 0 ; i<keys.length;i++){
 //use in create blogger
 console.log("test push");
 
-var postsRef = db.ref("blogger");
+// var postsRef = db.ref("blogger");
 
-postsRef.push().set({
-  "user":"jirawat",
-  "title":"koko",
-  "content":"jer koko"
-})
+// postsRef.push().set({
+//   "user":"jirawat",
+//   "title":"koko",
+//   "content":"jer koko"
+// })
 
 
 // ref = db.ref("blogger");
@@ -175,9 +175,17 @@ u.setpass(null);
 u.setstate("User");
 res.send('<html><head></head><body><script>alert("logout success"); window.location.replace("/");</script></body></html>')
 });
+
 app.post('/createblogger-sendfile',function(req,res){
   console.log(req.body.title);
   console.log(req.body.content);
+  var postsRef = db.ref("blogger");
+
+postsRef.push().set({
+  "user":String(u.user),
+  "title":String(req.body.title),
+  "content":String(req.body.content)
+})
 });
 
 
