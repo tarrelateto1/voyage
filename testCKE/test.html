@@ -10,7 +10,7 @@
       width: 800px;
       border: 1px solid black;  
     }
-      
+    
 .box {
   width: 40%;
   margin: 0 auto;
@@ -96,60 +96,56 @@
 
   </head>
   <body>
-    <div class= "b">
-    <textarea name="ckeditor" class="ckeditor"></textarea>
-  </div>
-  <script>editor = CKEDITOR.replace('ckeditor'); // bind editor
 
-editor.addCommand("mySimpleCommand", { // create named command
+      <a href="myblogger > <button type ="button">Myblogger</button></a><br>
+      <a href="logout"> <button type="button" id="logout">Logout</button> </a>
+      <div style="align:center;" > Create BLOGGER </div>
+      <form method="POST"  name="blog" action="/createblogger-sendfile">
+      <h1> Title</h1><br>
+      <input type= "text" name="title"><br>
+      <h1>write Review</h1><br>
+      <div class="b">
+      <textarea name="content" class="ckeditor" ></textarea></div>
+      <!-- <textarea name="content" class="ckeditor"></textarea>
+                      <script>
+                              CKEDITOR.replace( 'content' );
+                      </script>
+                       -->
+      
+      <button type="submit" id="myCheck" >submit</button>
+      </form>
+      
+      <div class="box" hidden="hidden">
+        <a class="button" href="#popup1" hidden="hidden" id="fileButton">Let me Pop up</a>
+      </div>
+      
+      <div id="popup1" class="overlay">
+        <div class="popup">
+          <h2>Get link url file</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+                      <progress value ="0" max = "100" id="uploader">0%</progress>
+                      <input type ="file" value ="upload" id="fileButton" />
+                      <p>URL:</p><br>
+                      <p id="getURL"></p>
+      
+          </div>
+        </div>
+      </div>
+
+<script>editor = CKEDITOR.replace("content"); 
+editor.addCommand("mySimpleCommand", { 
     exec: function(edt) {
-      document.getElementById("fileButton1").click();
+        document.getElementById("fileButton").click();
     }
 });
-
-editor.ui.addButton('SuperButton', { // add new button and bind our command
+editor.ui.addButton("SuperButton", { 
     label: "Click me",
-    command: 'mySimpleCommand',
-    toolbar: 'insert',
-    icon: 'https://avatars1.githubusercontent.com/u/5500999?v=2&s=16'
+    command: "mySimpleCommand",
+    toolbar: "insert",
+    icon: "https://avatars1.githubusercontent.com/u/5500999?v=2&s=16" 
 });
-  </script>
-  
-
-<div class="box" hidden="hidden">
-    <a class="button" href="#popup1" hidden="hidden" id="fileButton1">Let me Pop up</a>
-  </div>
-  
-  <div id="popup1" class="overlay">
-    <div class="popup">
-      <h2>Get link url file</h2>
-      <a class="close" href="#">&times;</a>
-      <div class="content">
-                  <!-- <progress value ="0" max = "100" id="uploader">0%</progress>
-                  <input type ="file" value ="upload" id="fileButton" />
-                  <p>URL:</p><br>
-                  <p id="getURL"></p> -->
-                  <progress value ="0" max = "100" id="uploader">0%</progress>
-                  <input type ="file" value ="upload" id="fileButton" />
-                  <button onclick="DisplayURL()">test1</button><br>
-                  <button onclick="DisplayURL2()">test2</button>
-                  <input type = "text" value="" id="getURL"/>
-                  <p id="demo"></p>
-                  <img src="" alt="Smiley face" id="myimg">
-  
-      </div>
-    </div>
-  </div>
-  <!-- <progress value ="0" max = "100" id="uploader">0%</progress>
-  <input type ="file" value ="upload" id="fileButton" />
-  <button onclick="DisplayURL()">test1</button><br>
-  <button onclick="DisplayURL2()">test2</button>
-  <input type = "text" value="" id="getURL"/>
-  <p id="demo"></p>
-  <img src="" alt="Smiley face" id="myimg"> -->
-
-
-
+</script>
 <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -163,7 +159,7 @@ editor.ui.addButton('SuperButton', { // add new button and bind our command
   };
   firebase.initializeApp(config);
 
-  // Get elements
+  //Get elements
   var uploader = document.getElementById('uploader');
   var fileButton = document.getElementById('fileButton');
 
@@ -209,40 +205,12 @@ editor.ui.addButton('SuperButton', { // add new button and bind our command
 }).catch(function(error) {
   // Handle any errors
 });
+     
       }
-      );    
+      );
+
+      
   });
-
-  function DisplayURL(){
-    var storageRef = firebase.storage().ref();
-    storageRef.child('images/characters.png').getDownloadURL().then(function(url) {
-  // `url` is the download URL for 'images/stars.jpg'
-  // This can be downloaded directly:
-  var xhr = new XMLHttpRequest();
-  xhr.responseType = 'blob';
-  xhr.onload = function(event) {
-    var blob = xhr.response;
-  };
-  xhr.open('GET', url);
-  xhr.send();
-  // Or inserted into an <img> element:
-  var img = document.getElementById('myimg');
-  document.getElementById("demo").innerHTML = url
-  document.getElementById("getURL").value = url;
-
-  img.src = url;
-}).catch(function(error) {
-  // Handle any errors
-});
-  }
-
-  function DisplayURL2(){
-    var storageRef = firebase.storage().ref(); 
-    var img = document.getElementById('myimg');
-    img.src = storageRef.child('images/characters.png').getDownloadURL().url;
-
-  }
-
 </script>
   </body>
 </html>

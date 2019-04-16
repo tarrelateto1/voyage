@@ -15,6 +15,8 @@ var u = new user();
 
 // set api
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static("/"))
+
 app.use(body.urlencoded({ extended: false }));
 
 
@@ -301,18 +303,30 @@ var head = '';
   head += ' <meta charset="UTF-8">';
   head += ' </head>'
   head += '  <meta name="viewport" content="width=device-width, initial-scale=1">'
-  head += '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  ';
+  // head += '  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">  '
+  // head += '<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  ';
+  //ของ CNC
   // head += '<script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>'
+  //ของเก่า
   head += '<script rel="stylesheet" src="./ckeditor/ckeditor.js"></script>'
+  // head += '  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  '
+  head += '  <link rel="stylesheet" href="./css/createblogger.css">';
+
+  // head += '  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">'
+  // head += '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>'
   // head += ' <script src ="./ckeditor/ckeditor.js">'
   // head += '<script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>  '
+  //ของ node
   // head += '<script src="./node_modules/ckeditor/ckeditor.js"></script>  '
   head += '<style>div.b{width: 800px;}</style>'
+  // head += '<script>$(function(){$("#includedContent").load("./html/createblogger.html");});</script>'
   head += ' </header>'; 
   // ส่วนของ body
   var body = '';
-  body += '<body style="width:800;height:400;">';
+  body += '<body >';
 //ส่วนที่สามารถแก้ไขได้
+  // body += '<div id="includedContent"></div>';
+
   body += '<a href="myblogger > <button type ="button">Myblogger</button></a><br>'
   body += '<a href="logout"> <button type="button" id="logout">Logout</button> </a>';
   body += '<div style="align:center;" > Create BLOGGER </div>'
@@ -321,45 +335,108 @@ var head = '';
   body += '<input type= "text" name="title"><br>';
   body += '<h1>write Review</h1><br>'
   body += '<div class="b">'
-  // body += '<textarea name="content" id="editor">This is some sample content.</textarea>'
-  // body += '<script>'
-  // body += '        ClassicEditor'
-  // body += '          .create( document.querySelector( "#editor" ) )'
-  // body += '          .then( editor => {'
-  //   body += '                  console.log( editor );'
-  //   body += '            } )'
-  //   body += '           .catch( error => {'
-  //     body += '                   console.error( error );'
-  //     body += '              } );'
-  //     body += ' </script>'
+
   body += '<textarea name="content" class="ckeditor" ></textarea></div>'
-  // body += ' <script>CKEDITOR.replace( "content" );</script>'
-  // body += '<div id="editor"> <p>This is the editor content.</p></div>';
-  // body += '<script src="./node_modules/ckeditor/ckeditor.js"></script>';
-  // body += '<script>CKEDITOR.replace( "editor" );</script>';
-  //  body += '<textarea name="content" class="ckeditor" ></textarea></div>'
-  // body += ' <script>CKEDITOR.replace( "content" );</script>'
-  body += '    <input type ="file" value ="upload" id="fileButton" hidden ="hidden"/> '
+//   body += '    <input type ="file" value ="upload" id="fileButton" hidden ="hidden"/> '
   body += '<button type="submit" id="myCheck" >submit</button>'
   body += '</form>'
-//เพิ่มปุ่ม
+// //เพิ่มปุ่ม
+body += '<div class="box" hidden="hidden"><a class="button" href="#popup1" hidden="hidden" id="fileButton">Let me Pop up</a></div>'
+body += '<div id="popup1" class="overlay">'
+body += '<div class="popup">'
+body += '<h2>Get link url file</h2>'
+body += '	<a class="close" href="#">&times;</a>'
+body += '	<div class="content">'
+body += '          <progress value ="0" max = "100" id="uploader">0%</progress>'
+body += '       <input type ="file" value ="upload" id="fileButton" />'
+body += '        <p>URL:</p><br>'
+body += '         <p id="getURL"></p>'
 
-
+body += '	</div>'
+body += '	</div>'
+body += '</div>'
 body += '<script>editor = CKEDITOR.replace("content"); '
 body += 'editor.addCommand("mySimpleCommand", { '
-  body += '  exec: function(edt) {'
-    body += '       document.getElementById("fileButton").click();'
+  body += '   exec: function(edt) {'
+    body += '     document.getElementById("fileButton").click();'
     body += '   }'
     body += '});'
-
     body += 'editor.ui.addButton("SuperButton", { '
-      body += '  label: "Click me",'
+      body += ' label: "Click me",'
       body += '  command: "mySimpleCommand",'
       body += '  toolbar: "insert",'
-      body += '   icon: "https://avatars1.githubusercontent.com/u/5500999?v=2&s=16" '
+      body += '  icon: "https://avatars1.githubusercontent.com/u/5500999?v=2&s=16" '
       body += '});'
-      body += '	</script>'
+      body += '</script>'
+
 //ส่วนท้ายของ body
+body += '<script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>'
+body += '<script>'
+  // Initialize Firebase
+  body += 'var config = {'
+    body += '  apiKey: "AIzaSyDn41yOzZgCstOOyEy-HpmtVLfonw70_B0",'
+    body += '   authDomain: "voyag'
+    body += '   e-cd39b.firebaseapp.com",'
+    body += '   databaseURL: "https://voyage-cd39b.firebaseio.com",'
+    body += '    projectId: "voyage-cd39b",'
+    body += '    storageBucket: "voyage-cd39b.appspot.com",'
+    body += '  messagingSenderId: "449530269350"'
+    body += ' };'
+    body += ' firebase.initializeApp(config);'
+  // ส่วนที่โหลดรูป
+  body+= 'var uploader = document.getElementById("uploader");'
+
+  body += ' var fileButton = document.getElementById("fileButton");'
+
+  // Listenfor file selection
+  body += ' fileButton.addEventListener("change",function(e){'
+      //Get file
+      body += '  var file = e.target.files[0];'
+
+      //create a storage ref 
+      body += '   var storageRef = firebase.storage().ref("images/"+file.name);'
+
+      //Upload file
+      body += '    var task = storageRef.put(file);'
+
+      // Update progress bar
+      body += '   task.on("state_changed",'
+      
+      body += '   function progress(snapshot){'
+        body += '      var percentage = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;'
+        body += '       uploader.value = percentage;'
+        body += '      },'
+      body += '     function error(err){'
+
+        body += '       },'
+        body += '      function complete(){'
+          body += '       var storageRef = firebase.storage().ref();'
+          body += '   storageRef.child("images/"+file.name).getDownloadURL().then(function(url) {'
+  // `url` is the download URL for 'images/stars.jpg'
+  // This can be downloaded directly:
+  body += ' var xhr = new XMLHttpRequest();'
+  body += ' xhr.responseType = "blob";'
+  body += '  xhr.onload = function(event) {'
+    body += '    var blob = xhr.response;'
+    body += '  };'
+    body += ' xhr.open("GET", url);'
+    body += '  xhr.send();'
+  // Or inserted into an <img> element:
+  body += '  var img = document.getElementById("myimg");'
+  // document.getElementById("demo").innerHTML = url
+  body += '  document.getElementById("getURL").value = url;'
+
+  body += '  img.src = url;'
+  body += ' }).catch(function(error) {'
+  // Handle any errors'
+  body += ' });'
+     
+  body += '    }'
+  body += '     );'
+
+      
+  body += ' });'
+  body +='</script>'
 
 body += '</body>';
 body += '</html>';
