@@ -16,7 +16,7 @@ var u = new user();
 // set api
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static("/"))
-
+app.set('view engine','ejs');
 app.use(body.urlencoded({ extended: false }));
 
 
@@ -229,7 +229,9 @@ if(u.user ==null){
   var html ='';
   html += head;
   html += body;
-  res.send(html);
+  // res.send(html);
+  res.render('index');
+
 });
 // Myblooger page
 app.get('/myblogger',function(req,res){

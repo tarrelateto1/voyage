@@ -18,12 +18,13 @@
   },
   "homepage": "https://github.com/tarrelateto1/voyage#readme",
   "devDependencies": {
-    "firebase-admin": "^7.2.0"
+    "ejs": "^2.6.1",
+    "firebase-admin": "^7.2.0",
+    "nodemon": "^1.18.11"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "ckeditor": "^4.11.4",
-    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "firebase": "^5.9.4",
     "html": "^1.0.0",
