@@ -102,7 +102,7 @@
                     </li>
                     
                     
-                    <li><a href="Login.html"><span class="d-inline-block p-3 bg-primary text-white btn btn-primary">Login</span></a></li>
+                    <li><a href="#signup" data-toggle="modal" data-target=".log-sign"><span class="d-inline-block p-3 bg-primary text-white btn btn-primary">Login</span></a></li>
                   </ul>
                 </div>
               </nav>
@@ -266,7 +266,90 @@
               </div>
             </footer>
           </div>
-        
+
+          <div class="modal fade bs-modal-sm log-sign" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+          
+                  <div class="bs-example bs-example-tabs">
+                      <ul id="myTab" class="nav nav-tabs">
+                        <li id="tab1" class=" active tab-style login-shadow "><a href="#signin" data-toggle="tab">Log In</a></li>
+                        <li id="tab2" class=" tab-style "><a href="#signup" data-toggle="tab">Sign Up</a></li>
+          
+                      </ul>
+                  </div>
+                <div class="modal-body">
+                  <div id="myTabContent" class="tab-content">
+          
+                  <div class="tab-pane fade active in" id="signin">
+                      <form class="form-horizontal" method="POST" action = "/login" name="login">
+                      <fieldset>
+                      <!-- Sign In Form -->
+                      <!-- Text input-->
+          
+                         <div class="group">
+          <input required="" class="input" type="text"name = "user"><span class="highlight"></span><span class="bar"></span>
+              <label class="label" id= "labelblack" for="date" style = "color:black;">Username</label></div>
+          
+          
+                      <!-- Password input-->
+                      <div class="group">
+          <input required="" class="input" type="password" name="pass"><span class="highlight"></span><span class="bar"></span>
+              <label class="label" id= "labelblack" for="date">Password</label>
+              </div>
+          <em>minimum 6 characters</em>
+  
+          
+          
+                      <!-- Button -->
+                      <div class="control-group">
+                        <label class="control-label" for="signin"></label>
+                        <div class="controls">
+                          <button id="signin" name="signin" class="btn btn-primary btn-block" type="submit">Log In</button>
+                        </div>
+                      </div>
+                      </fieldset>
+                      </form>
+                  </div>
+          
+          
+                  <div class="tab-pane fade" id="signup">
+                      <form class="form-horizontal" method="POST" action = "/register" name="register">
+                      <fieldset>
+                      <!-- Sign Up Form -->
+                      <!-- Text input-->
+                      <div class="group">
+          <input required="" class="input" type="text" name="user"><span class="highlight"></span><span class="bar"></span>
+              <label class="label" id= "labelblack" for="date" >Username</label></div>
+          
+                      <!-- Text input-->
+                   
+          
+                      <!-- Text input-->
+                      <div class="group">
+          <input required="" class="input" type="password" name="pass"><span class="highlight"></span><span class="bar"></span>
+              <label class="label" id= "labelblack" for="date">Password</label></div>
+                        <em>1-8 Characters</em>
+          
+                
+                      <!-- Button -->
+                      <div class="control-group">
+                        <label class="control-label" for="confirmsignup"></label>
+                        <div class="controls">
+                          <button id="confirmsignup" name="confirmsignup" class="btn btn-primary btn-block">Sign Up</button>
+                        </div>
+                      </div>
+                      </fieldset>
+                      </form>
+                </div>
+              </div>
+                </div>
+            
+              </div>
+            </div>
+          </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <script rel="stylesheet" src="./js/popupsign.js"></script>
           <script src="js/jquery-3.3.1.min.js"></script>
           <script src="js/jquery-migrate-3.0.1.min.js"></script>
           <script src="js/jquery-ui.js"></script>
