@@ -598,7 +598,7 @@ app.get('/myblogger', function (req, res) {
 });
 
 // create blogger page
-app.get('/createblogger', function (req, res) {
+app.get('/testcreateblogger', function (req, res) {
 
   // แบบเก่า
 
@@ -1285,8 +1285,8 @@ body += '</html>';
 app.listen(8081);
 
 
-app.get('/testcreateblogger', function (req, res) {
-  res.render('test');
+app.get('/createblogger', function (req, res) {
+  res.render('create_blog');
 
 });
 
