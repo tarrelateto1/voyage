@@ -180,14 +180,16 @@ app.get('/logout', function (req, res) {
 
 app.post('/createblogger-sendfile', function (req, res) {
   console.log(req.body.title);
-  console.log(req.body.content);
+  console.log(req.body.ckeditor);
   var postsRef = db.ref("blogger");
 
   postsRef.push().set({
     "user": String(u.user),
     "title": String(req.body.title),
-    "content": String(req.body.content)
+    "content": String(req.body.ckeditor)
   })
+  res.send('<html><head></head><body><script>alert("create blogger success"); window.location.replace("/");</script></body></html>')
+
 });
 
 
