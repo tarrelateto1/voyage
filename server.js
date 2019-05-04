@@ -600,16 +600,50 @@ app.get('/myblogger', function (req, res) {
 });
 
 // create blogger page
-app.get('/testcreateblogger', function (req, res) {
-
-});
-
-
-
-
 
 app.get('/createblogger', function (req, res) {
   res.render('create_blog');
 
+});
+
+app.get('/TotalBlogger',function(req,res){
+//init head
+  var head ='';
+  head += ' <!DOCTYPE html>';
+  head += '<html lang="en">';
+  head += ' <head>';
+  head += '    <title>Funder &mdash; Colorlib Website Template</title>';
+  head += '   <meta charset="utf-8">';
+  head += '  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">';
+
+  head += '  <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Work+Sans:300,400,700" rel="stylesheet">';
+  head += '  <link rel="stylesheet" href="fonts/icomoon/style.css">';
+
+  head += ' <link rel="stylesheet" href="css/bootstrap.min.css">';
+  head += '  <link rel="stylesheet" href="css/magnific-popup.css">';
+  head += '  <link rel="stylesheet" href="css/jquery-ui.css">';
+  head += '  <link rel="stylesheet" href="css/owl.carousel.min.css">';
+  head += ' <link rel="stylesheet" href="css/owl.theme.default.min.css">';
+  head += ' <link rel="stylesheet" href="css/bootstrap-datepicker.css">';
+  head += ' <link rel="stylesheet" href="css/animate.css">';
+    
+  head += ' <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">';
+    
+    
+    
+  head += ' <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">';
+  
+  head += '  <link rel="stylesheet" href="css/aos.css">';
+
+  head += '  <link rel="stylesheet" href="css/style.css">';
+
+  head += '</head>';
+//init body
+var body = '';
+
+var html = '';
+  html += head;
+  html += body;
+  res.send(html);
 });
 app.listen(8081);
