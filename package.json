@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ckeditor": "^4.11.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "firebase": "^5.11.1",
+    "firebase-admin": "^7.3.0",
+    "html": "^1.0.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -16,18 +27,5 @@
   "bugs": {
     "url": "https://github.com/tarrelateto1/voyage/issues"
   },
-  "homepage": "https://github.com/tarrelateto1/voyage#readme",
-  "devDependencies": {
-    "ejs": "^2.6.1",
-    "firebase-admin": "^7.2.0",
-    "nodemon": "^1.19.0"
-  },
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "ckeditor": "^4.11.4",
-    "express": "^4.16.4",
-    "firebase": "^5.9.4",
-    "html": "^1.0.0",
-    "path": "^0.12.7"
-  }
+  "homepage": "https://github.com/tarrelateto1/voyage#readme"
 }
