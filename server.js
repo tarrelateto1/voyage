@@ -1007,7 +1007,6 @@ app.get('/showblogger/:name', function (req, res) {
     body += '     </div>';
     body += '   </div>';
     body += '</div>';
-
   }
 
   body += '    <hr>';
@@ -1275,6 +1274,8 @@ app.get('/showblogger/:name', function (req, res) {
   var html = '';
   html += head;
   html += body;
-  res.send(html);
+  // res.send(html);
+ var data = {name:s};
+  res.render("blog",{t2:t2,key:data});
 });
 app.listen(8081);
