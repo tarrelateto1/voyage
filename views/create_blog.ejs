@@ -259,13 +259,13 @@
 
   <script>
     editor = CKEDITOR.replace('ckeditor'); 
-editor.addCommand("mySimpleCommand", { // create named command
+editor.addCommand("mySimpleCommand", { 
     exec: function(edt) {
       document.getElementById("fileButton1").click();
     }
 });
 
-editor.ui.addButton('SuperButton', { // add new button and bind our command
+editor.ui.addButton('SuperButton', { 
     label: "Click me",
     command: 'mySimpleCommand',
     toolbar: 'insert',
@@ -283,14 +283,9 @@ editor.ui.addButton('SuperButton', { // add new button and bind our command
       <h2>Get link url file</h2>
       <a class="close" href="#">&times;</a>
       <div class="content">
-                  <!-- <progress value ="0" max = "100" id="uploader">0%</progress>
-                  <input type ="file" value ="upload" id="fileButton" />
-                  <p>URL:</p><br>
-                  <p id="getURL"></p> -->
+                 
                   <progress value ="0" max = "100" id="uploader">0%</progress>
                   <input type ="file" value ="upload" id="fileButton" />
-                  <!-- <button onclick="DisplayURL()">test1</button><br>
-                  <button onclick="DisplayURL2()">test2</button> -->
                   <input type = "text" value="" id="getURL"/>
                   <p id="demo"></p>
                   <img src="" alt="Smiley face" id="myimg">
@@ -298,19 +293,8 @@ editor.ui.addButton('SuperButton', { // add new button and bind our command
       </div>
     </div>
   </div>
-  <!-- <progress value ="0" max = "100" id="uploader">0%</progress>
-  <input type ="file" value ="upload" id="fileButton" />
-  <button onclick="DisplayURL()">test1</button><br>
-  <button onclick="DisplayURL2()">test2</button>
-  <input type = "text" value="" id="getURL"/>
-  <p id="demo"></p>
-  <img src="" alt="Smiley face" id="myimg"> -->
-
-
-
 <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
 <script>
-  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDn41yOzZgCstOOyEy-HpmtVLfonw70_B0",
     authDomain: "voyage-cd39b.firebaseapp.com",
@@ -321,22 +305,16 @@ editor.ui.addButton('SuperButton', { // add new button and bind our command
   };
   firebase.initializeApp(config);
 
-  // Get elements
   var uploader = document.getElementById('uploader');
   var fileButton = document.getElementById('fileButton');
 
-  // Listenfor file selection
   fileButton.addEventListener('change',function(e){
-      //Get file
       var file = e.target.files[0];
 
-      //create a storage ref 
       var storageRef = firebase.storage().ref('images/'+file.name);
 
-      //Upload file
       var task = storageRef.put(file);
 
-      // Update progress bar
       task.on('state_changed',
       
       function progress(snapshot){
@@ -349,8 +327,7 @@ editor.ui.addButton('SuperButton', { // add new button and bind our command
       function complete(){
         var storageRef = firebase.storage().ref();
     storageRef.child('images/'+file.name).getDownloadURL().then(function(url) {
-  // `url` is the download URL for 'images/stars.jpg'
-  // This can be downloaded directly:
+
   var xhr = new XMLHttpRequest();
   xhr.responseType = 'blob';
   xhr.onload = function(event) {
@@ -358,14 +335,11 @@ editor.ui.addButton('SuperButton', { // add new button and bind our command
   };
   xhr.open('GET', url);
   xhr.send();
-  // Or inserted into an <img> element:
   var img = document.getElementById('myimg');
-  // document.getElementById("demo").innerHTML = url
   document.getElementById("getURL").value = url;
 
   img.src = url;
 }).catch(function(error) {
-  // Handle any errors
 });
       }
       );    
@@ -374,8 +348,6 @@ editor.ui.addButton('SuperButton', { // add new button and bind our command
   function DisplayURL(){
     var storageRef = firebase.storage().ref();
     storageRef.child('images/characters.png').getDownloadURL().then(function(url) {
-  // `url` is the download URL for 'images/stars.jpg'
-  // This can be downloaded directly:
   var xhr = new XMLHttpRequest();
   xhr.responseType = 'blob';
   xhr.onload = function(event) {
@@ -383,7 +355,6 @@ editor.ui.addButton('SuperButton', { // add new button and bind our command
   };
   xhr.open('GET', url);
   xhr.send();
-  // Or inserted into an <img> element:
   var img = document.getElementById('myimg');
   document.getElementById("demo").innerHTML = url
   document.getElementById("getURL").value = url;
