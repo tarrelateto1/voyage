@@ -131,7 +131,7 @@
       <div class="col-md-12 col-lg-12 mb-5">
         <div class="media-image">
         <div class="media-image-body">
-    <%= t2[key.name]["content"] %>
+    <%- t2[key.name]["content"] %>
       
       </div>
        </div>
@@ -151,21 +151,15 @@
     </div>
   <%}%>
 <hr>
+<% if (user.name != "undefined") { %>
 <center><h2>create comment<h2></center><br>
-
   <div class="py-5 bg-light">
       <div class="container">
      <div class="row">
-    
-      <div class="col-md-12 col-lg-8 mb-5">
-    
-    
+      <div class="col-md-12 col-lg-12 mb-12">
       <form method="POST"  name="blog" action="/createcomment-sendfile">
-    
       <div class="row form-group">
        <div class="col-md-12 mb-3 mb-md-0">
-      <!-- <label class="font-weight-bold" for="fullname">Tittle</label>
-       <input type="text" id="fullname" class="form-control" placeholder="Tittle"name="title"> -->
        </div>
       </div>
       <div class="row form-group">
@@ -179,6 +173,11 @@
     
     </form>
   </div>
+
+  <% }else{ %>
+<center><h2>create comment<h2></center><br>
+<center><h2>log in please<h2></center><br>
+  <% }%>
 
 
 
