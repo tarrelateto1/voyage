@@ -57,8 +57,8 @@
                     <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
   
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
-                      <li class="active"><a href="index.html">Home</a></li>
-                      <li class="has-children">
+                      <li class="active"><a href="/">Home</a></li>
+                      <%# <li class="has-children">
                         <a href="insurance.html">Region</a>
                         <ul class="dropdown arrow-top">
                           <li class="has-children">
@@ -96,11 +96,8 @@
                                 </li>
                                 
                         </ul>
-                      </li>
-                      <li><a href="blog.html">Blog</a></li>
-                   
-                      <li><a href="create blog.html">Create Blog</a></li>
-                      <li><a href="contact.html"><span class="d-inline-block p-3 bg-primary text-white btn btn-primary">Log Out</span></a></li>
+                      </li> %>
+                      
                     </ul>
                   </div>
                 </nav>
@@ -145,7 +142,7 @@
         <div class="media-image-body">
           คนเขียน : <%= t2[key.name]["comment"][k]["user"] %>
           <br>
-          <%= t2[key.name]["comment"][k]["content"]%>
+          <%- t2[key.name]["comment"][k]["content"]%>
         </div>
       </div>
     </div>
@@ -165,7 +162,7 @@
       <div class="row form-group">
       <div class="col-md-12">
      <label class="font-weight-bold" for="email">Write Review</label>
-      <textarea  rows="4" cols="50" name="ckeditor" class="ckeditor" ></textarea>
+      <textarea  rows="4" cols="50" name="ckeditor" class="ckeditor"required="required" ></textarea>
       
       <input type="submit" value="Save" class="btn btn-primary text-white px-4 py-2">
       </div>
@@ -178,60 +175,6 @@
 <center><h2>create comment<h2></center><br>
 <center><h2>log in please<h2></center><br>
   <% }%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-    <form action="#" class="p-5 bg-white">
-
-      
-      <div class="row form-group">
-        <div class="col-md-12">
-          <label class="font-weight-bold" for="email">Write Review</label>
-          <textarea rows="4" cols="30" type="email" id="email" class="form-control" placeholder="Write Review"></textarea>
-          
-        </div>
-      </div>
-    </form>
-    <hr>
-    <form action="#" class="p-5 bg-white">
-
-      
-      <div class="row form-group">
-        <div class="col-md-12">
-          <label class="font-weight-bold" for="email">Write Review</label>
-          <textarea rows="4" cols="30" type="email" id="email" class="form-control" ></textarea>
-          
-        </div>
-      </div>
-    </form> -->
-
-
 
     
     <footer class="site-footer">

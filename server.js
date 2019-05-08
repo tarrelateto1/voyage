@@ -47,12 +47,7 @@ ref.once("value", function (snapshot) {
 
 
 // เหมือนจะไม่ได้ใช้แล้ว
-app.get('/test_load_img', function (req, res) {
-  res.sendFile(__dirname + '/Design/load_img.html');
-});
-app.get('/test', function (req, res) {
-  res.sendFile(__dirname + '/Design/index.html');
-});
+
 //register 
 app.post('/register', function (req, res) {
   var ref = db.ref("User");
@@ -133,6 +128,8 @@ app.post('/createblogger-sendfile', function (req, res) {
     "title": String(req.body.title),
     "content": String(req.body.ckeditor)
   })
+   db = admin.database();
+   ref = db.ref("blogger");
   ref.once("value", function (snapshot) {
     t2 = snapshot.val();
     
@@ -156,7 +153,6 @@ app.get('/', function (req, res) {
   head += '  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">'
   head += '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>'
   head += '<script>$(function(){$("#includedContent").load("./html/home.html");});</script>'
-
   head += ' </header>';
   // ส่วนของ body
   var body = '';
@@ -186,12 +182,7 @@ app.get('/', function (req, res) {
 });
 // Myblooger page
 app.get('/myblogger', function (req, res) {
-  // ส่วนใหม่
-  var head = '';
-  
-  var html = '';
-  html += head;
-  html += body;
+
   // res.send(html);
   var data = {name:String(u.user)};
 
@@ -212,9 +203,7 @@ app.get('/TotalBlogger', function (req, res) {
 
 app.get('/showblogger/:name', function (req, res) {
 
-  
-  html += head;
-  html += body;
+
   // res.send(html);
   keyblogger = String(req.params.name);
   var s = String(req.params.name);
@@ -223,7 +212,7 @@ app.get('/showblogger/:name', function (req, res) {
   res.render("blog",{t2:t2,key:data,user:user});
 });
 var keyblogger ;
-app.get('/createcomment-sendfile',function(req,res){
+app.post('/createcomment-sendfile',function(req,res){
   // console.log(req.body.title);
   console.log(req.body.ckeditor);
   console.log(keyblogger);
@@ -233,11 +222,11 @@ app.get('/createcomment-sendfile',function(req,res){
   postsRef.push().set({
     "user": String(u.user),
     "content": String(req.body.ckeditor)
-  })
-
+  });
+   db = admin.database();
+   ref = db.ref("blogger");
   ref.once("value", function (snapshot) {
     t2 = snapshot.val();
-    
   });
   
   res.send('<html><head></head><body><script>alert("create comment success"); window.location.replace("/");</script></body></html>')
