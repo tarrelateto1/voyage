@@ -133,6 +133,10 @@ app.post('/createblogger-sendfile', function (req, res) {
     "title": String(req.body.title),
     "content": String(req.body.ckeditor)
   })
+  ref.once("value", function (snapshot) {
+    t2 = snapshot.val();
+    
+  });
   res.send('<html><head></head><body><script>alert("create blogger success"); window.location.replace("/");</script></body></html>')
 
 });
@@ -198,7 +202,6 @@ app.get('/myblogger', function (req, res) {
 
 app.get('/createblogger', function (req, res) {
   res.render('create_blog');
-
 });
 
 app.get('/TotalBlogger', function (req, res) {
